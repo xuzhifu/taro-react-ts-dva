@@ -27,10 +27,12 @@
 
 
 // 写法二 connect的写法
-import { Component } from 'react'
+import { Component, useState } from 'react'
 import { connect } from "react-redux";
 import { View, Text, Button } from '@tarojs/components'
 import './index.scss'
+import Test from '../../components/Test'
+
 
 type PageStateProps = {
   name: any;
@@ -62,9 +64,16 @@ const Index = (props: IProps) => {
     }
     // console.log('props.name',props.name)
 
+    const [title,setTitle] = useState<any>('1')
+    const titleChange = (aaa) => {
+      setTitle(aaa)
+    }
+
     return (<View>
-      <Text>首页{props.name}</Text>
+        <Text>首页{props.name}</Text>
         <Button onClick={chageModel}>修改model数据</Button>
+        <Text>{title}</Text>
+        <Test titleChange={titleChange} />
       </View>
     )
 }
